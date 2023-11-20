@@ -7,13 +7,11 @@ export function Device() {
     useEffect(() => {
         invoke('get_devices').then((res) => {
             setDevices(res)
-            console.log({devices})
         })
     }, [])
 
     function deviceChange(e) {
-        console.log("Device has been changed!")
-        console.log(e.target.value)
+        invoke('select_device', {idx: parseInt(e.target.value)})
     }
 
     return (

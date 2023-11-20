@@ -6,19 +6,11 @@ import { Device } from './Device'
 
 function App() {
   const [devices, setDevices] = useState([])
-  const [greetMsg, setGreetMsg] = useState("")
   const [name, setName] = useState("")
 
   useEffect(() => {
-    console.log({devices})
     invoke("get_devices").then(setDevices)
   }, [])
-
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    setGreetMsg(await invoke("greet", { name }))
-    const devices = await invoke("get_devices")
-  }
 
   return (
     <div class="container">
